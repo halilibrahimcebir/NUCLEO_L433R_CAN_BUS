@@ -1,5 +1,12 @@
-#include "Classify.h"
+/*
+ * Classify.c
+ * Motor State Classification Implementation
+ *
+ *  Created on: May 9, 2025
+ *      Author: Administrator
+ */
 
+#include "Classify.h"
 
 int classify_motor_state(float* output) {
     int class_idx = 0;
@@ -12,5 +19,5 @@ int classify_motor_state(float* output) {
         }
     }
 
-    return class_idx;  // 0: hareketsiz, 1: kalkış, 2: hareket, 3: duruş
+    return class_idx;  // 0: stationary, 1: lifting, 2: moving, 3: stopping
 }

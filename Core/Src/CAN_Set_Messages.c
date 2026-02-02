@@ -1,10 +1,12 @@
+/*
+ * CAN_Set_Messages.c
+ * CAN Message Setting Implementation
+ *
+ *  Created on: Jan 8, 2025
+ *      Author: seken.durmaz
+ */
 
 #include "CAN_Set_Messages.h"
-
-
-
-
-
 
 void CAN_Set_Signed_int32(uint32_t num1, uint32_t num2, uint32_t length, uint8_t *output_result)
 {
@@ -20,8 +22,6 @@ void CAN_Set_Signed_int32(uint32_t num1, uint32_t num2, uint32_t length, uint8_t
 
         for (int i = 0; i < 4; i++)
             output_result[i] = (out1 >> (8 * i)) & 0xFF;
-
-
     }
     else if (length == 8)
     {
@@ -40,7 +40,5 @@ void CAN_Set_Signed_int32(uint32_t num1, uint32_t num2, uint32_t length, uint8_t
 
         for (int i = 0; i < 4; i++)
             output_result[i + 4] = (out2 >> (8 * i)) & 0xFF;
-
-
     }
 }
