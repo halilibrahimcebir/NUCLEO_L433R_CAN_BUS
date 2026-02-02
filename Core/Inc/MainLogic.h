@@ -5,8 +5,8 @@
  *      Author: seken.durmaz
  */
 
-#ifndef INC_PID_H_
-#define INC_PID_H_
+#ifndef INC_MAINLOGIC_H_
+#define INC_MAINLOGIC_H_
 
 #include "stm32l4xx_hal.h"
 #include <stdbool.h>
@@ -54,4 +54,4 @@ extern float sample2;
 
 int Logic();
 
-#endif /* INC_PID_H_ */
+#endif /* INC_MAINLOGIC_H_ */
