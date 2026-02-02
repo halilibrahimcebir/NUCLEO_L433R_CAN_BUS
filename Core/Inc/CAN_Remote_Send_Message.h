@@ -8,7 +8,7 @@
 #ifndef INC_R_H_
 #define INC_R_H_
 
-#include "stm32l4xx_hal.h"  // veya kullandığınız STM32 serisinin uygun başlık dosyası
+#include "stm32l4xx_hal.h"
 #include "stdio.h"
 extern uint32_t CAN_Adresler[];
 extern uint8_t adres_sayaci;

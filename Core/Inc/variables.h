@@ -8,7 +8,6 @@
 #ifndef INC_VARIABLES_H_
 #define INC_VARIABLES_H_
 
-#include <MainLogic.h>
 #include <stdbool.h>
 
 #include "CANN_Get_Message.h"
@@ -81,7 +80,7 @@ float f_m0_vel;									float f_m1_vel;//////////////
 float f_m0_pos;									float f_m1_pos;//////////////
 float f_m0_pos_for_PID;									float f_m1_pos_for_PID;//////////////
 float f_m0_error;								float f_m1_error;////////////
-float f_encoder0_error;							float f_encoder0_error;//////
+float f_encoder0_error;							float f_encoder1_error;//////
 float f_sensorless0_error;						float f_sensorless1_error;///
 float f_m0_iq_measured;							float f_m1_iq_measured;//////
 float f_m0_iq_setpoint;							float f_m1_iq_setpoint;//////
@@ -162,8 +161,8 @@ volatile uint32_t lastReceiveTime = 0;
  uint16_t rx_index=0 ;
  uint8_t receiving = 0;
 #define RX_BUFFER_SIZE 100
-#define STX 0x02  // Başlangıç Byte
-#define ETX 0x03  // Bitiş Byte
+#define STX 0x02  // Start Byte
+#define ETX 0x03  // End Byte
  char* UART_DataMessages[255];
  char sent_message[255];
  uint8_t Uart_Total_Pac;
@@ -207,66 +206,60 @@ float m1_Sigmoid_result_Rev;
 int Class_indx;
 bool Calibraion_For_Profile;
 void send_heartbeat();
- //Erorr System
- bool E_Driver_Fault;
- bool E_Can_Fault;
- bool E_Uart_Fault;
- bool E_System_Fault;
- bool E_Exo_Fault;
- bool E_EMG_Pressed;
- bool E_EMG_Status;
+
+// Error System
+bool E_Driver_Fault;
+bool E_Can_Fault;
+bool E_Uart_Fault;
+bool E_System_Fault;
+bool E_Exo_Fault;
+bool E_EMG_Pressed;
+bool E_EMG_Status;
 bool Can_Sent;
 
- //Status Data
- bool S_Running;
- bool S_Stopeed;
- bool S_Should_Reset;
- bool S_Resetted;
- bool Can_Reset;
- bool Calibration_Fail;
- bool Reset_Ack;
- bool Panel_Life_Error;
- uint16_t Panel_Life_Counter=0;
+// Status Data
+bool S_Running;
+bool S_Stopped;
+bool S_Should_Reset;
+bool S_Resetted;
+bool Can_Reset;
+bool Calibration_Fail;
+bool Reset_Ack;
+bool Panel_Life_Error;
+uint16_t Panel_Life_Counter = 0;
 bool Mode_Walk;
 uint32_t Panel_Mode_Value;
 uint32_t Panel_Status_Value;
- float Panel_Power_Value;
- float Panel_Battery_Lev;
-
+float Panel_Power_Value;
+float Panel_Battery_Lev;
 
 #define CAN_ID_RESET 0
 
+// For Query
 
- //For Query
-
-
- /// For BPM Machina
- void F_BPM_BPM_Start_Up_Chk();
- void F_BPM_Logic();
- void F_BPM_Forward();
- void F_BPM_Reverse();
- void F_BPM_Start(bool Start_Req);
- void F_BPM_Stop(bool Stop_Req);
- void F_BPM_Reset(bool Reset_Req);
- void BPM_Calibration(bool SW_1,bool SW_2);
- bool BPM_Start_req;
- bool BPM_Start_Up;
+// For BPM Machina
+void F_BPM_BPM_Start_Up_Chk();
+void F_BPM_Logic();
+void F_BPM_Forward();
+void F_BPM_Reverse();
+void F_BPM_Start(bool Start_Req);
+void F_BPM_Stop(bool Stop_Req);
+void F_BPM_Reset(bool Reset_Req);
+void BPM_Calibration(bool SW_1,bool SW_2);
+bool BPM_Start_req;
+bool BPM_Start_Up;
 bool BPM_Reverse;
-bool 	BPM_Forward;
+bool BPM_Forward;
 bool BPM_Calibration_Fail;
-bool b_BPM_Sopped;
+bool b_BPM_Stopped;
 void F_BPM_Stop_Seq();
 
 void send_Batary_Req();
 void F_Panel_Alive();
 
- /// For BPM Machina
+CAN_Message txQueue[CAN_TX_QUEUE_SIZE];
+volatile int txQueueHead = 0;
+volatile int txQueueTail = 0;
+volatile int txInProgress = 0;
 
-  CAN_Message txQueue[CAN_TX_QUEUE_SIZE];
-  volatile int txQueueHead = 0;
-  volatile int txQueueTail = 0;
-  volatile int txInProgress = 0;
-
-
-  bool Can_Sent;
 #endif /* INC_VARIABLES_H_ */

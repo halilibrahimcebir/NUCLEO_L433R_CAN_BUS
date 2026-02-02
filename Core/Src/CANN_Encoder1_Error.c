@@ -11,9 +11,9 @@ void CANN_Encoder1_Error(TwointValues can_64to32values)
 {
 	typedef struct
 	{
-		char error_name[50];   // Hata adı (örneğin: "CONTROL_ITERATION_MISSED")
-		char hex_value[12];    // Hata değeri (hexadecimal formatında, örneğin: "0x1")
-		char error_message[100]; // Hata mesajı
+		char error_name[50];   // Error name (e.g., "CONTROL_ITERATION_MISSED")
+		char hex_value[12];    // Error value in hexadecimal format (e.g., "0x1")
+		char error_message[100]; // Error message
 	} ErrorCode;
 
 	uint32_t bit;

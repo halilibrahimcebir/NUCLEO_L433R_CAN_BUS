@@ -1,5 +1,9 @@
 /*
- * M1.PID.h
+ * M1_PID.h
+ * Motor 1 PID Controller
+ *
+ * This module implements a PID (Proportional-Integral-Derivative) controller
+ * for Motor 1 position/velocity control.
  *
  *  Created on: Feb 25, 2025
  *      Author: Administrator
@@ -10,13 +14,31 @@
 #include "stdint.h"
 #include "stdbool.h"
 
-
-
-
-
+/**
+ * @brief Calculate PID output for Motor 1
+ * @param currentValue Current measured value (position or velocity)
+ * @return Normalized PID output (0.0 to 1.0)
+ */
 float Calculate_M1(float currentValue);
+
+/**
+ * @brief Initialize PID controller for Motor 1
+ * @param kp Proportional gain constant
+ * @param ki Integral gain constant
+ * @param kd Derivative gain constant
+ * @param initialSetPoint Initial target setpoint
+ */
 void PID_Control_M1(float kp, float ki, float kd, float initialSetPoint);
+
+/**
+ * @brief Update the setpoint for Motor 1
+ * @param newSetPoint New target setpoint value
+ */
 void SetSetPoint_M1(float newSetPoint);
+
+/**
+ * @brief Reset PID controller state for Motor 1
+ */
 void Reset_M1();
 
 extern float Kp_M1; // Proportional constant
