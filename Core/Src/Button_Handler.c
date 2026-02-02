@@ -12,13 +12,13 @@ void GPIO_Init(void)
 {
     GPIO_InitTypeDef GPIO_InitStruct = {0};
 
-    // GPIOA portunun saatini etkinleştir
+    // Enable GPIOA port clock
     __HAL_RCC_GPIOA_CLK_ENABLE();
 
-    // GPIO pinini giriş olarak yapılandır (örnek: PIN0)
+    // Configure GPIO pin as input (e.g., PIN0)
     GPIO_InitStruct.Pin = GPIO_PIN_0;
     GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-    GPIO_InitStruct.Pull = GPIO_PULLUP;  // Buton genellikle Pull-up ile kullanılır
+    GPIO_InitStruct.Pull = GPIO_PULLUP;  // Button typically uses Pull-up
     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 }
 
@@ -28,10 +28,10 @@ GPIO_PinState CheckButtonState(const char *buttonName, GPIO_TypeDef *GPIOx, uint
     GPIO_PinState state = HAL_GPIO_ReadPin(GPIOx, GPIO_Pin);
 
     if (state == GPIO_PIN_SET) {
-        // Butona basılmadığı durumda (Pull-up kullanılıyorsa)
+        // Button not pressed (when using Pull-up)
     	//printf("%s is pressed.\n", buttonName);
     } else {
-        // Butona basıldığı durumda
+        // Button pressed
         //printf("%s is not pressed.\n", buttonName);
     }
 

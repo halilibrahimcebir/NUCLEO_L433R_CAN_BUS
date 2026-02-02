@@ -47,23 +47,21 @@ float Calculate_M0(float currentValue)
 	}
 
 	output_M0 = output_M0 / 20.0f;
-	final_out_0=M0_Power_Value*output_M0;
+	final_out_0 = M0_Power_Value * output_M0;
 	return output_M0;
 }
 
-	void SetSetPoint_M0(float newSetPoint)
-	{
-		setPoint_M0 = newSetPoint;
-	}
-	void Reset_M0()
-	{
+void SetSetPoint_M0(float newSetPoint)
+{
+	setPoint_M0 = newSetPoint;
+}
 
-
-			integral_M0 = 0;
-			previousError_M0 = 0;
-			error_M0 = 0;
-			derivative_M0 = 0;
-			output_M0=0;
-
-	}
+void Reset_M0()
+{
+	integral_M0 = 0;
+	previousError_M0 = 0;
+	error_M0 = 0;
+	derivative_M0 = 0;
+	output_M0 = 0;
+}
 
