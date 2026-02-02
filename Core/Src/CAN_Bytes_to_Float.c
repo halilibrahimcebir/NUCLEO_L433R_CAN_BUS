@@ -22,8 +22,8 @@ float bytesToFloat(unsigned char* bytes) {
 
 void floatToBytes(float f, unsigned char* bytes) {
     FloatUnion fu;
-    fu.value = f; // Float değerini union'a atayın
+    fu.value = f; // Assign float value to union
     for (int i = 0; i < 4; i++) {
-        bytes[i] = fu.bytes[i]; // Byte'ları çıkarın
+        bytes[i] = fu.bytes[i]; // Extract bytes
     }
 }

@@ -219,7 +219,7 @@ bool Can_Sent;
 
 // Status Data
 bool S_Running;
-bool S_Stopeed;
+bool S_Stopped;
 bool S_Should_Reset;
 bool S_Resetted;
 bool Can_Reset;
@@ -251,7 +251,7 @@ bool BPM_Start_Up;
 bool BPM_Reverse;
 bool BPM_Forward;
 bool BPM_Calibration_Fail;
-bool b_BPM_Sopped;
+bool b_BPM_Stopped;
 void F_BPM_Stop_Seq();
 
 void send_Batary_Req();

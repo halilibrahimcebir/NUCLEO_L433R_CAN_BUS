@@ -75,7 +75,7 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
 
 		    if (status != HAL_OK)
 		    {
-		        printf("CAN alıcı sisteminde hata!\n");
+		        printf("CAN receiver system error!\n");
 		    }
 		    else
 		    {
@@ -988,13 +988,13 @@ void F_BPM_Reverse()
 void F_BPM_Stop_Seq()
 {
 	  uint8_t buf2[8];
-	if(b_BPM_Sopped)
+	if(b_BPM_Stopped)
 	{
 		if(f_m0_pos>-4)
 		{
 			CAN_Set_Signed_int32(1, 0, 8, buf2);
 										 CAN_QueueMessage(0x207, buf2, 4);
-										 b_BPM_Sopped=false;
+										 b_BPM_Stopped=false;
 		}
 
 	}
@@ -1038,7 +1038,7 @@ void F_BPM_Stop(bool Stop_Req)
 					  BPM_Reverse=false;
 					  BPM_Forward=false;
 
-					  b_BPM_Sopped=true;
+					  b_BPM_Stopped=true;
 					  CAN_Set_Bytes_to_Float (0.00,0,buf2);
 					  CAN_QueueMessage(0x20c, buf2, 4);
 						 BPM_Start_Up=false;
@@ -1091,7 +1091,7 @@ void BPM_Calibration(bool SW_1,bool SW_2)
 								}
 				else
 								{
-					if(!b_BPM_Sopped)
+					if(!b_BPM_Stopped)
 					{
 						BPM_Calibration_Fail=true;
 					}
