@@ -226,7 +226,7 @@ bool Can_Reset;
 bool Calibration_Fail;
 bool Reset_Ack;
 bool Panel_Life_Error;
-uint16_t Panel_Life_Counter;
+uint16_t Panel_Life_Counter = 0;
 bool Mode_Walk;
 uint32_t Panel_Mode_Value;
 uint32_t Panel_Status_Value;
@@ -258,8 +258,8 @@ void send_Batary_Req();
 void F_Panel_Alive();
 
 CAN_Message txQueue[CAN_TX_QUEUE_SIZE];
-volatile int txQueueHead;
-volatile int txQueueTail;
-volatile int txInProgress;
+volatile int txQueueHead = 0;
+volatile int txQueueTail = 0;
+volatile int txInProgress = 0;
 
 #endif /* INC_VARIABLES_H_ */
